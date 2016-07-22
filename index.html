@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fabric Polygon</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="css/materialize.min.css">
+    </head>
+    <style type="text/css">
+        *{
+            font-family: "Roboto", sans-serif;
+            font-weight: 100;
+        }
+        
+    </style>
+    <body style="overflow:hidden;">
+        <nav class="grey darken-4" role="navigation" id = "nav-bar" style = "height:50px;">
+            <div class="nav-wrapper container">
+                <a id="logo-container" class="brand-logo" style="line-height: 50px;font-size: 20px;">Fabric Polygon</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a id="create-polygon" style="line-height: 50px;font-size: 20px;cursor:pointer;">Create Polygon</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="section no-pad-bot no-pad-top">
+            <canvas id = "c"></canvas>
+        </div>
+    </body>
+</html>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/fabric.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/polygon.js"></script>
