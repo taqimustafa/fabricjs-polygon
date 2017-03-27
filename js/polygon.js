@@ -9,12 +9,12 @@ prototypefabric.polygon = {
         var random = Math.floor(Math.random() * (max - min + 1)) + min;
         var id = new Date().getTime() + random;
         var circle = new fabric.Circle({
-            radius: 5, 
-            fill: '#ffffff', 
+            radius: 5,
+            fill: '#ffffff',
             stroke: '#333333',
             strokeWidth: 0.5,
-            left: options.e.layerX, 
-            top: options.e.layerY,
+            left: (options.e.layerX/canvas.getZoom()),
+            top: (options.e.layerY/canvas.getZoom()),
             selectable: false,
             hasBorders: false,
             hasControls: false,
@@ -27,7 +27,7 @@ prototypefabric.polygon = {
                 fill:'red'
             })
         }
-        var points = [options.e.layerX,options.e.layerY,options.e.layerX,options.e.layerY];
+        var points = [(options.e.layerX/canvas.getZoom()),(options.e.layerY/canvas.getZoom()),(options.e.layerX/canvas.getZoom()),(options.e.layerY/canvas.getZoom())];
         line = new fabric.Line(points, {
             strokeWidth: 2,
             fill: '#999999',
@@ -47,10 +47,10 @@ prototypefabric.polygon = {
                 x: pos.x,
                 y: pos.y
             });
-            var polygon = new fabric.Polygon(points,{ 
+            var polygon = new fabric.Polygon(points,{
                 stroke:'#333333',
                 strokeWidth:1,
-                fill: '#cccccc', 
+                fill: '#cccccc',
                 opacity: 0.1,
                 selectable: false,
                 hasBorders: false,
@@ -63,11 +63,11 @@ prototypefabric.polygon = {
             canvas.renderAll();
         }
         else{
-            var polyPoint = [{x:options.e.layerX,y:options.e.layerY}];
-            var polygon = new fabric.Polygon(polyPoint,{ 
+            var polyPoint = [{x:(options.e.layerX/canvas.getZoom()),y:(options.e.layerY/canvas.getZoom())}];
+            var polygon = new fabric.Polygon(polyPoint,{
                 stroke:'#333333',
                 strokeWidth:1,
-                fill: '#cccccc', 
+                fill: '#cccccc',
                 opacity: 0.1,
                 selectable: false,
                 hasBorders: false,
@@ -82,8 +82,8 @@ prototypefabric.polygon = {
         pointArray.push(circle);
         lineArray.push(line);
 
-        canvas.add(circle);
         canvas.add(line);
+        canvas.add(circle);
         canvas.selection = false;
     },
     generatePolygon : function(pointArray){
@@ -99,16 +99,16 @@ prototypefabric.polygon = {
             canvas.remove(line);
         });
         canvas.remove(activeShape).remove(activeLine);
-        var polygon = new fabric.Polygon(points,{ 
+        var polygon = new fabric.Polygon(points,{
             stroke:'#333333',
             strokeWidth:0.5,
-            fill: 'red', 
+            fill: 'red',
             opacity: 1,
             hasBorders: false,
             hasControls: false
         });
         canvas.add(polygon);
-        
+
         activeLine = null;
         activeShape = null;
         polygonMode = false;
